@@ -1,21 +1,26 @@
-Решение тестового задания оформлено отдельными скриптами по каждой задаче.
+# test_case_TBC
 
-## Структура
+Тестовое задание: SQL (SQL Server) и BI (Power BI).
 
-- `schema_and_data.sql` - создание таблиц и заполнение тестовыми данными
-- `SQL_solutions/task1.sql` - агрегация заказов по дням и месяцам
-- `SQL_solutions/task2.sql` - статистика по городам и топ-клиент по сумме
-- `SQL_solutions/task3.sql` - помесячная сводка по клиентам
-- `SQL_solutions/task4.sql` - суммы по городам/месяцам + итоги
-- `SQL_solutions/task5.sql` - процедура `sp_AddClient`
-- `SQL_solutions/task6.sql` - генерация диапазона дат и вставка в таблицу
+## Структура репозитория
 
-## Порядок запуска
+| Путь | Назначение |
+|------|------------|
+| `SQL_solutions/schema_and_data.sql` | Создание таблиц и тестовые данные |
+| `SQL_solutions/task1.sql` … `task6.sql` | Решения задач 1–6 |
+| `BI_solution/test_tbc.pbix` | Отчёт Power BI |
+| `BI_solution/Dataset/` | CSV для модели (dim/fact) |
+| `BI_solution/README_rus.docx` / `README_eng.docx` | Описание BI-части (подробно) |
 
-1. Выполнить `schema_and_data.sql`
-2. Затем по очереди запускать `SQL_solutions/task1.sql` ... `SQL_solutions/task6.sql`
+## SQL: как проверить
 
-## Примечания
+1. Выполнить `SQL_solutions/schema_and_data.sql`
+2. По очереди выполнить `SQL_solutions/task1.sql` … `SQL_solutions/task6.sql`
 
-- Все скрипты написаны под SQL Server (T-SQL)
-- В каждом файле есть короткие комментарии по логике решения
+Скрипты написаны под **Microsoft SQL Server (T-SQL)**. В файлах задач есть короткие комментарии по логике.
+
+## BI (кратко по README из `BI_solution`)
+
+Дашборд **«Эффективность взыскания и анализ просроченного портфеля (Collections & Overdue)»**: синтетический банковский контекст взыскания, **звёздная схема** (dim_customers, dim_collectors, dim_calendar, fact_loans, fact_payments, fact_collection_actions), подготовка данных в **Power Query** (типизация, дедуп, DPD-бакеты, стадии взыскания, PTP и др.), ключевые **DAX**-метрики (Outstanding/Overdue, Recovery, Contact/PTP rate и т.д.), страницы **Executive Overview**, **DPD & Risk**, **Collection Team Performance**, **Operational Loan Details**, параметр **Top N Collectors**, **RLS** по ролям (регион / супервайзеры), базовые шаги по производительности (отключение auto date/time, вынесение тяжёлых таблиц на отдельные страницы и др.).
+
+Подробности — в `BI_solution/README_rus.docx` (или `README_eng.docx`).
